@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.py-deps/
+.dsh-tmp/
+
+# Database (generated at runtime)
+finsignal.db
+*.db
+
+# Environment (secrets)
+.env
+
+# Local account profiles (generated at runtime)
+data/account_profile.json
+data/profiles/
+
+# OS
+Thumbs.db
+.DS_Store

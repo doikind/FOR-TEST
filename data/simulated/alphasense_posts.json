@@ -1,0 +1,68 @@
+{
+  "account": "AlphaSense",
+  "data_authenticity": "simulated_demo",
+  "note": "Extension-reference demo data (simulated_demo). NOT the primary case; only used as fallback primary if Finimize data is insufficient. Paraphrased derived features, not real posts; engagement metrics are simulated.",
+  "generated_at": "2026-08-17T00:00:00+00:00",
+  "posts": [
+    {
+      "post_id": "AS_DEMO_001",
+      "source_url": "https://www.alpha-sense.com/",
+      "topic": "investing",
+      "content_type": "research_note",
+      "snippet": "Three signals we're tracking in AI capex this quarter. The number that matters most: 42%.",
+      "posted_at": "2026-08-12T08:00:00+00:00",
+      "metrics": {"likes": 210, "replies": 34, "reposts": 55},
+      "data_authenticity": "simulated_demo"
+    },
+    {
+      "post_id": "AS_DEMO_002",
+      "source_url": "https://www.alpha-sense.com/",
+      "topic": "fintech",
+      "content_type": "research_note",
+      "snippet": "Digital banks in Southeast Asia: the unit-economics gap, in 3 charts. What's your take?",
+      "posted_at": "2026-08-11T08:00:00+00:00",
+      "metrics": {"likes": 187, "replies": 29, "reposts": 41},
+      "data_authenticity": "simulated_demo"
+    },
+    {
+      "post_id": "AS_DEMO_003",
+      "source_url": "https://www.alpha-sense.com/",
+      "topic": "ai",
+      "content_type": "research_note",
+      "snippet": "Agentic AI is moving from demos to production. One metric shows the shift.",
+      "posted_at": "2026-08-10T08:00:00+00:00",
+      "metrics": {"likes": 165, "replies": 22, "reposts": 38},
+      "data_authenticity": "simulated_demo"
+    },
+    {
+      "post_id": "AS_DEMO_004",
+      "source_url": "https://www.alpha-sense.com/",
+      "topic": "ai",
+      "content_type": "update",
+      "snippet": "Weekly AI research roundup.",
+      "posted_at": "2026-08-09T08:00:00+00:00",
+      "metrics": {"likes": 22, "replies": 2, "reposts": 4},
+      "data_authenticity": "simulated_demo"
+    },
+    {
+      "post_id": "AS_DEMO_005",
+      "source_url": "https://www.alpha-sense.com/",
+      "topic": "investing",
+      "content_type": "update",
+      "snippet": "Market wrap: indexes flat.",
+      "posted_at": "2026-08-08T08:00:00+00:00",
+      "metrics": {"likes": 18, "replies": 1, "reposts": 3},
+      "data_authenticity": "simulated_demo"
+    },
+    {
+      "post_id": "AS_DEMO_006",
+      "source_url": "https://www.alpha-sense.com/",
+      "topic": "fintech",
+      "content_type": "update",
+      "snippet": "A new research partnership was announced.",
+      "posted_at": "2026-08-07T08:00:00+00:00",
+      "metrics": {"likes": 15, "replies": 1, "reposts": 2},
+      "data_authenticity": "simulated_demo"
+    }
+  ]
+}

@@ -1,0 +1,329 @@
+{
+  "account": "Finimize",
+  "generated_at": "2026-08-18T04:16:09.269316+00:00",
+  "generated_from": "x.com public profile page",
+  "data_authenticity": "cached_public",
+  "note": "真实公开数据快照：由 x.com 公开页面解析生成（真实 Post ID/时间/全文；互动计数为页面占位值，未使用）",
+  "posts": [
+    {
+      "post_id": "2089449687325773987",
+      "source_url": "https://x.com/Finimize/status/2089449687325773987",
+      "snippet": "What you need to know about markets today 👇 1️⃣ China’s economy is losing steam, with weak spending, investment, and factory output putting its growth target under pressure. Chinese tech stocks are still partying, though – pushing already eye-watering valuations even higher. 2️⃣ ",
+      "metrics": {},
+      "posted_at": "2026-08-17T20:30:00+00:00",
+      "data_authenticity": "live_public",
+      "relative_score": 0.332,
+      "score_factors": {
+        "length_norm": 0.738,
+        "density_norm": 0.222,
+        "emoji_norm": 0.333,
+        "metric_source": "observable_features"
+      },
+      "metrics_note": "X 公开页面未向匿名访客渲染互动计数（非公开指标），相对表现基于可观察派生特征计算；互动数据标记为 UNKNOWN，不虚构。"
+    },
+    {
+      "post_id": "2089287694517981548",
+      "source_url": "https://x.com/Finimize/status/2089287694517981548",
+      "snippet": "🔎 The Focus This Week: Retail Therapy The US second-quarter earnings season might be in its late innings, but some of the country’s biggest retailers will be stepping up to the plate this week. And their results – along with what they say about the months ahead – should give inve",
+      "metrics": {},
+      "posted_at": "2026-08-17T09:46:18+00:00",
+      "data_authenticity": "live_public",
+      "relative_score": 0.345,
+      "score_factors": {
+        "length_norm": 0.929,
+        "density_norm": 0.0,
+        "emoji_norm": 0.333,
+        "metric_source": "observable_features"
+      },
+      "metrics_note": "X 公开页面未向匿名访客渲染互动计数（非公开指标），相对表现基于可观察派生特征计算；互动数据标记为 UNKNOWN，不虚构。"
+    },
+    {
+      "post_id": "2088362525129589135",
+      "source_url": "https://x.com/Finimize/status/2088362525129589135",
+      "snippet": "What you need to know about markets today 👇 1️⃣ Chinese tech stocks are now the world’s priciest, with AI and semiconductor shares soaring on retail enthusiasm and government support. But eye-watering valuations show just how much optimism is already baked into the boom. 2️⃣ US 3",
+      "metrics": {},
+      "posted_at": "2026-08-14T20:30:00+00:00",
+      "data_authenticity": "live_public",
+      "relative_score": 0.483,
+      "score_factors": {
+        "length_norm": 0.833,
+        "density_norm": 0.333,
+        "emoji_norm": 0.333,
+        "metric_source": "observable_features"
+      },
+      "metrics_note": "X 公开页面未向匿名访客渲染互动计数（非公开指标），相对表现基于可观察派生特征计算；互动数据标记为 UNKNOWN，不虚构。"
+    },
+    {
+      "post_id": "2088115139623231750",
+      "source_url": "https://x.com/Finimize/status/2088115139623231750",
+      "snippet": "Europe’s brutal summer is doing more than drying up rivers. 🌡️💧 Chemicals, steel and power are feeling the strain – but the more interesting investment story may be who gets paid to help Europe adapt. Water, cooling, grids and storage could be the real long-term winners. 👀 Read m",
+      "metrics": {},
+      "posted_at": "2026-08-14T04:06:59+00:00",
+      "data_authenticity": "live_public",
+      "relative_score": 0.464,
+      "score_factors": {
+        "length_norm": 0.881,
+        "density_norm": 0.0,
+        "emoji_norm": 1.0,
+        "metric_source": "observable_features"
+      },
+      "metrics_note": "X 公开页面未向匿名访客渲染互动计数（非公开指标），相对表现基于可观察派生特征计算；互动数据标记为 UNKNOWN，不虚构。"
+    },
+    {
+      "post_id": "2088014384165728696",
+      "source_url": "https://x.com/Finimize/status/2088014384165728696",
+      "snippet": "What you need to know about markets today 👇 1️⃣ Anthropic is reportedly eyeing an October IPO at a $2 trillion-plus valuation, potentially making it the biggest public debut ever. Its explosive growth could justify the price tag – but the listing will also be a major gut check fo",
+      "metrics": {},
+      "posted_at": "2026-08-13T21:26:37+00:00",
+      "data_authenticity": "live_public",
+      "relative_score": 0.383,
+      "score_factors": {
+        "length_norm": 0.905,
+        "density_norm": 0.222,
+        "emoji_norm": 0.333,
+        "metric_source": "observable_features"
+      },
+      "metrics_note": "X 公开页面未向匿名访客渲染互动计数（非公开指标），相对表现基于可观察派生特征计算；互动数据标记为 UNKNOWN，不虚构。"
+    },
+    {
+      "post_id": "2087913992861716621",
+      "source_url": "https://x.com/Finimize/status/2087913992861716621",
+      "snippet": "European stocks are having their moment, shrugging off gloomy predictions that war in the Middle East would usher in stagflation – that nasty combination of stubborn inflation and sluggish growth. The Stoxx Europe 600 is up more than 10% this year and has notched a string of reco",
+      "metrics": {},
+      "posted_at": "2026-08-13T14:47:42+00:00",
+      "data_authenticity": "live_public",
+      "relative_score": 0.368,
+      "score_factors": {
+        "length_norm": 0.857,
+        "density_norm": 0.556,
+        "emoji_norm": 0.0,
+        "metric_source": "observable_features"
+      },
+      "metrics_note": "X 公开页面未向匿名访客渲染互动计数（非公开指标），相对表现基于可观察派生特征计算；互动数据标记为 UNKNOWN，不虚构。"
+    },
+    {
+      "post_id": "2087816126277304516",
+      "source_url": "https://x.com/Finimize/status/2087816126277304516",
+      "snippet": "Picture your last hotel stay – the logo on the keycard, the branded shampoo, the loyalty points that landed in your app overnight. It may seem strange, but the company behind that logo probably didn't own the building, buy the bed, and might not even employ the person who checked",
+      "metrics": {},
+      "posted_at": "2026-08-13T08:18:48+00:00",
+      "data_authenticity": "live_public",
+      "relative_score": 0.272,
+      "score_factors": {
+        "length_norm": 0.905,
+        "density_norm": 0.0,
+        "emoji_norm": 0.0,
+        "metric_source": "observable_features"
+      },
+      "metrics_note": "X 公开页面未向匿名访客渲染互动计数（非公开指标），相对表现基于可观察派生特征计算；互动数据标记为 UNKNOWN，不虚构。"
+    },
+    {
+      "post_id": "2087463168004030618",
+      "source_url": "https://x.com/Finimize/status/2087463168004030618",
+      "snippet": "What you need to know about markets today 👇 1️⃣ Nvidia is teaming up with Wall Street heavyweights to finance $500 billion of AI infrastructure, aiming to turn its chips into assets that can be borrowed against and leased. That could unlock even more AI spending – but only if tho",
+      "metrics": {},
+      "posted_at": "2026-08-12T08:56:17+00:00",
+      "data_authenticity": "live_public",
+      "relative_score": 0.434,
+      "score_factors": {
+        "length_norm": 0.929,
+        "density_norm": 0.444,
+        "emoji_norm": 0.333,
+        "metric_source": "observable_features"
+      },
+      "metrics_note": "X 公开页面未向匿名访客渲染互动计数（非公开指标），相对表现基于可观察派生特征计算；互动数据标记为 UNKNOWN，不虚构。"
+    },
+    {
+      "post_id": "2087201647722184754",
+      "source_url": "https://x.com/Finimize/status/2087201647722184754",
+      "snippet": "Leveraged ETFs are becoming a much bigger force in markets – and AI stocks are right in the firing line. These funds use derivatives to magnify daily stock moves, often by two or three times. They still hold only around $250 billion globally, versus more than $22 trillion across ",
+      "metrics": {},
+      "posted_at": "2026-08-11T15:37:05+00:00",
+      "data_authenticity": "live_public",
+      "relative_score": 0.376,
+      "score_factors": {
+        "length_norm": 0.881,
+        "density_norm": 0.556,
+        "emoji_norm": 0.0,
+        "metric_source": "observable_features"
+      },
+      "metrics_note": "X 公开页面未向匿名访客渲染互动计数（非公开指标），相对表现基于可观察派生特征计算；互动数据标记为 UNKNOWN，不虚构。"
+    },
+    {
+      "post_id": "2086978975126196277",
+      "source_url": "https://x.com/Finimize/status/2086978975126196277",
+      "snippet": "📈 Corporate America just delivered its best earnings beat rate since 2021 – but investors still aren’t impressed. 86% of the S&P 500 has beaten earnings expectations. but the bar is getting much higher, especially for AI. 🤖 So what actually matters now? 👉 https://finimize.com/con",
+      "metrics": {},
+      "posted_at": "2026-08-11T00:52:16+00:00",
+      "data_authenticity": "live_public",
+      "relative_score": 0.636,
+      "score_factors": {
+        "length_norm": 0.786,
+        "density_norm": 1.0,
+        "emoji_norm": 1.0,
+        "metric_source": "observable_features"
+      },
+      "metrics_note": "X 公开页面未向匿名访客渲染互动计数（非公开指标），相对表现基于可观察派生特征计算；互动数据标记为 UNKNOWN，不虚构。"
+    },
+    {
+      "post_id": "2086912973273174522",
+      "source_url": "https://x.com/Finimize/status/2086912973273174522",
+      "snippet": "What you need to know about markets today 👇 1️⃣ Berkshire Hathaway is spending again under new CEO Greg Abel, snapping up stocks, buying back its own shares, and adding $10 billion to its Alphabet stake. It’s an early sign that the post-Buffett Berkshire could be more aggressive ",
+      "metrics": {},
+      "posted_at": "2026-08-10T20:30:00+00:00",
+      "data_authenticity": "live_public",
+      "relative_score": 0.49,
+      "score_factors": {
+        "length_norm": 0.857,
+        "density_norm": 0.333,
+        "emoji_norm": 0.333,
+        "metric_source": "observable_features"
+      },
+      "metrics_note": "X 公开页面未向匿名访客渲染互动计数（非公开指标），相对表现基于可观察派生特征计算；互动数据标记为 UNKNOWN，不虚构。"
+    },
+    {
+      "post_id": "2086730061504213384",
+      "source_url": "https://x.com/Finimize/status/2086730061504213384",
+      "snippet": "🔎 The Focus This Week: Fingers Crossed For A Cold Front The big question is whether the pace of consumer price increases continued to cool in July – as analysts expected – or if volatile oil prices kept things hot. See, US inflation was on its way down, falling to 3.5% in June, c",
+      "metrics": {},
+      "posted_at": "2026-08-10T08:23:10+00:00",
+      "data_authenticity": "live_public",
+      "relative_score": 0.411,
+      "score_factors": {
+        "length_norm": 1.0,
+        "density_norm": 0.222,
+        "emoji_norm": 0.333,
+        "metric_source": "observable_features"
+      },
+      "metrics_note": "X 公开页面未向匿名访客渲染互动计数（非公开指标），相对表现基于可观察派生特征计算；互动数据标记为 UNKNOWN，不虚构。"
+    },
+    {
+      "post_id": "2085825809441530174",
+      "source_url": "https://x.com/Finimize/status/2085825809441530174",
+      "snippet": "What you need to know about markets today 👇 1️⃣ The US unexpectedly lost jobs in July, easing fears that the Federal Reserve will need to raise interest rates anytime soon. Investors are now betting policymakers can afford to stay patient as the labor market cools. 2️⃣ US oil ref",
+      "metrics": {},
+      "posted_at": "2026-08-07T20:30:00+00:00",
+      "data_authenticity": "live_public",
+      "relative_score": 0.383,
+      "score_factors": {
+        "length_norm": 0.905,
+        "density_norm": 0.222,
+        "emoji_norm": 0.333,
+        "metric_source": "observable_features"
+      },
+      "metrics_note": "X 公开页面未向匿名访客渲染互动计数（非公开指标），相对表现基于可观察派生特征计算；互动数据标记为 UNKNOWN，不虚构。"
+    },
+    {
+      "post_id": "2085673721205792996",
+      "source_url": "https://x.com/Finimize/status/2085673721205792996",
+      "snippet": "Why The US Really Stepped In To Help Prop Up Japan’s Yen",
+      "metrics": {},
+      "posted_at": "2026-08-07T10:25:39+00:00",
+      "data_authenticity": "live_public",
+      "relative_score": 0.0,
+      "score_factors": {
+        "length_norm": 0.0,
+        "density_norm": 0.0,
+        "emoji_norm": 0.0,
+        "metric_source": "observable_features"
+      },
+      "metrics_note": "X 公开页面未向匿名访客渲染互动计数（非公开指标），相对表现基于可观察派生特征计算；互动数据标记为 UNKNOWN，不虚构。"
+    },
+    {
+      "post_id": "2085463421949202534",
+      "source_url": "https://x.com/Finimize/status/2085463421949202534",
+      "snippet": "What you need to know about markets today 👇 1️⃣ DeepSeek is raising AI prices after winning customers with ultra-cheap models, suggesting the race for market share is giving way to a race for profitability. That could also ease pricing pressure on US AI leaders ahead of their exp",
+      "metrics": {},
+      "posted_at": "2026-08-06T20:30:00+00:00",
+      "data_authenticity": "live_public",
+      "relative_score": 0.453,
+      "score_factors": {
+        "length_norm": 0.881,
+        "density_norm": 0.111,
+        "emoji_norm": 0.333,
+        "metric_source": "observable_features"
+      },
+      "metrics_note": "X 公开页面未向匿名访客渲染互动计数（非公开指标），相对表现基于可观察派生特征计算；互动数据标记为 UNKNOWN，不虚构。"
+    },
+    {
+      "post_id": "2085310565157884363",
+      "source_url": "https://x.com/Finimize/status/2085310565157884363",
+      "snippet": "AI stocks have sold off over three big fears: runaway spending, overbuilding, and shaky financing. But dig into the numbers, and the case for data centers, chips, and power looks far less fragile than the market suggests. ⚡️ Here’s why AI infrastructure still looks worth buying: ",
+      "metrics": {},
+      "posted_at": "2026-08-06T10:22:36+00:00",
+      "data_authenticity": "live_public",
+      "relative_score": 0.243,
+      "score_factors": {
+        "length_norm": 0.81,
+        "density_norm": 0.0,
+        "emoji_norm": 0.0,
+        "metric_source": "observable_features"
+      },
+      "metrics_note": "X 公开页面未向匿名访客渲染互动计数（非公开指标），相对表现基于可观察派生特征计算；互动数据标记为 UNKNOWN，不虚构。"
+    },
+    {
+      "post_id": "2085101034750550152",
+      "source_url": "https://x.com/Finimize/status/2085101034750550152",
+      "snippet": "What you need to know about markets today 👇 1️⃣ Wall Street banks are trying to offload billions in AI-related loans, spreading the risk of the data center boom. It's another reminder that AI financing is becoming deeply embedded across the wider financial system. 2️⃣ Strong earn",
+      "metrics": {},
+      "posted_at": "2026-08-05T20:30:00+00:00",
+      "data_authenticity": "live_public",
+      "relative_score": 0.361,
+      "score_factors": {
+        "length_norm": 0.833,
+        "density_norm": 0.222,
+        "emoji_norm": 0.333,
+        "metric_source": "observable_features"
+      },
+      "metrics_note": "X 公开页面未向匿名访客渲染互动计数（非公开指标），相对表现基于可观察派生特征计算；互动数据标记为 UNKNOWN，不虚构。"
+    },
+    {
+      "post_id": "2084738645026885989",
+      "source_url": "https://x.com/Finimize/status/2084738645026885989",
+      "snippet": "What you need to know about markets today 👇 1️⃣ Europe's worsening drought is becoming an economic problem, not just an environmental one. Disrupted manufacturing, transport, and power generation are threatening the earnings recovery that has helped lift European stocks this year",
+      "metrics": {},
+      "posted_at": "2026-08-04T20:30:00+00:00",
+      "data_authenticity": "live_public",
+      "relative_score": 0.303,
+      "score_factors": {
+        "length_norm": 0.714,
+        "density_norm": 0.111,
+        "emoji_norm": 0.333,
+        "metric_source": "observable_features"
+      },
+      "metrics_note": "X 公开页面未向匿名访客渲染互动计数（非公开指标），相对表现基于可观察派生特征计算；互动数据标记为 UNKNOWN，不虚构。"
+    },
+    {
+      "post_id": "2084548254650261555",
+      "source_url": "https://x.com/Finimize/status/2084548254650261555",
+      "snippet": "Pinned: The past month has given investors plenty to sweat over. Tech stumbled, markets got rockier, and plenty of the market’s high-flyers fell closer to Earth. So it’s a perfect time for a Finimize Portfolio update. Every month, we revisit our open ideas, check out the results,",
+      "metrics": {},
+      "posted_at": "2026-08-04T07:53:27+00:00",
+      "data_authenticity": "live_public",
+      "relative_score": 0.35,
+      "score_factors": {
+        "length_norm": 0.833,
+        "density_norm": 0.0,
+        "emoji_norm": 0.0,
+        "metric_source": "observable_features"
+      },
+      "metrics_note": "X 公开页面未向匿名访客渲染互动计数（非公开指标），相对表现基于可观察派生特征计算；互动数据标记为 UNKNOWN，不虚构。"
+    },
+    {
+      "post_id": "2084376259245563945",
+      "source_url": "https://x.com/Finimize/status/2084376259245563945",
+      "snippet": "What you need to know about markets today 👇 1️⃣ Alibaba claims its latest AI model rivals the best from the US – but at a much lower price and with open access. That could put fresh pressure on the business models of AI leaders while strengthening the case for investing in the in",
+      "metrics": {},
+      "posted_at": "2026-08-03T20:30:00+00:00",
+      "data_authenticity": "live_public",
+      "relative_score": 0.389,
+      "score_factors": {
+        "length_norm": 1.0,
+        "density_norm": 0.111,
+        "emoji_norm": 0.333,
+        "metric_source": "observable_features"
+      },
+      "metrics_note": "X 公开页面未向匿名访客渲染互动计数（非公开指标），相对表现基于可观察派生特征计算；互动数据标记为 UNKNOWN，不虚构。"
+    }
+  ]
+}

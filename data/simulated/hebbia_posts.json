@@ -1,0 +1,28 @@
+{
+  "account": "Hebbia",
+  "data_authenticity": "simulated_demo",
+  "note": "Extension-reference demo data (simulated_demo). Never mixed into the primary grouping; listed for completeness only.",
+  "generated_at": "2026-08-17T00:00:00+00:00",
+  "posts": [
+    {
+      "post_id": "HB_DEMO_001",
+      "source_url": "https://www.hebbia.ai/",
+      "topic": "ai",
+      "content_type": "product",
+      "snippet": "We trained a model to answer 100-page diligence questions in seconds.",
+      "posted_at": "2026-08-12T08:00:00+00:00",
+      "metrics": {"likes": 140, "replies": 18, "reposts": 30},
+      "data_authenticity": "simulated_demo"
+    },
+    {
+      "post_id": "HB_DEMO_002",
+      "source_url": "https://www.hebbia.ai/",
+      "topic": "investing",
+      "content_type": "product",
+      "snippet": "The future of research is a spreadsheet that reasons.",
+      "posted_at": "2026-08-11T08:00:00+00:00",
+      "metrics": {"likes": 98, "replies": 11, "reposts": 20},
+      "data_authenticity": "simulated_demo"
+    }
+  ]
+}

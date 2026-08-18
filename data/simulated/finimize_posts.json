@@ -1,0 +1,68 @@
+{
+  "account": "Finimize",
+  "data_authenticity": "simulated_demo",
+  "note": "De-identified demo benchmark data modeled on Finimize's public newsletter style. NOT real engagement metrics — no X API access, so engagement numbers are simulated_demo and must never be presented as real operational results. Post IDs/URLs are placeholders; snippets are paraphrased derived features, not full posts.",
+  "generated_at": "2026-08-17T00:00:00+00:00",
+  "posts": [
+    {
+      "post_id": "FIN_DEMO_001",
+      "source_url": "https://finimize.com/content/daily-brief",
+      "topic": "ai",
+      "content_type": "market_brief",
+      "snippet": "OpenAI filed confidentially for an IPO. Here's what that means for the AI capex trade. Three numbers to watch.",
+      "posted_at": "2026-08-12T08:00:00+00:00",
+      "metrics": {"likes": 412, "replies": 58, "reposts": 96},
+      "data_authenticity": "simulated_demo"
+    },
+    {
+      "post_id": "FIN_DEMO_002",
+      "source_url": "https://finimize.com/content/daily-brief",
+      "topic": "investing",
+      "content_type": "market_brief",
+      "snippet": "Norway's wealth fund warns of an AI-driven market bubble. The valuation math, in 4 charts. What's your read?",
+      "posted_at": "2026-08-11T08:00:00+00:00",
+      "metrics": {"likes": 388, "replies": 74, "reposts": 110},
+      "data_authenticity": "simulated_demo"
+    },
+    {
+      "post_id": "FIN_DEMO_003",
+      "source_url": "https://finimize.com/content/daily-brief",
+      "topic": "fintech",
+      "content_type": "market_brief",
+      "snippet": "Singapore is betting on agentic finance as AI and blockchain converge. Why it matters for digital banks. 3 takeaways.",
+      "posted_at": "2026-08-10T08:00:00+00:00",
+      "metrics": {"likes": 356, "replies": 61, "reposts": 87},
+      "data_authenticity": "simulated_demo"
+    },
+    {
+      "post_id": "FIN_DEMO_004",
+      "source_url": "https://finimize.com/content/daily-brief",
+      "topic": "fintech",
+      "content_type": "update",
+      "snippet": "Revolut's premium card launches in Singapore with a new annual fee.",
+      "posted_at": "2026-08-09T08:00:00+00:00",
+      "metrics": {"likes": 41, "replies": 5, "reposts": 8},
+      "data_authenticity": "simulated_demo"
+    },
+    {
+      "post_id": "FIN_DEMO_005",
+      "source_url": "https://finimize.com/content/daily-brief",
+      "topic": "ai",
+      "content_type": "update",
+      "snippet": "A bank announced a new AI governance role.",
+      "posted_at": "2026-08-08T08:00:00+00:00",
+      "metrics": {"likes": 28, "replies": 3, "reposts": 4},
+      "data_authenticity": "simulated_demo"
+    },
+    {
+      "post_id": "FIN_DEMO_006",
+      "source_url": "https://finimize.com/content/daily-brief",
+      "topic": "investing",
+      "content_type": "update",
+      "snippet": "Weekly markets recap: indexes moved modestly.",
+      "posted_at": "2026-08-07T08:00:00+00:00",
+      "metrics": {"likes": 33, "replies": 2, "reposts": 6},
+      "data_authenticity": "simulated_demo"
+    }
+  ]
+}
