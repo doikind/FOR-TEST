@@ -294,10 +294,21 @@ def page_discovery():
                 st.markdown(head_html, unsafe_allow_html=True)
                 st.markdown('<div class="fs-card">', unsafe_allow_html=True)
                 render_score_bars(item["dims"], item["reasons"])
+                # 中文一句话内容介绍：优先复用 enrich 缓存，否则现场生成
+                cn_intro = ""
+                try:
+                    from agents import zh_support
+                    cn_intro = zh_support.summarize_zh(
+                        ev.get("title", ""), ev.get("source", ""), ev.get("category", "")
+                    )
+                except Exception:  # noqa: BLE001
+                    cn_intro = ""
                 ev_url = ev.get("url", "")
                 url_line = f" · 🔗 [打开原文]({ev_url})" if ev_url else " · 无原文链接"
+                cn_clean = cn_intro.replace("事件摘要：", "").strip() if cn_intro else ""
                 st.markdown(
                     f"**英文标题**: {ev['title'][:90]}\n\n"
+                    f"**中文介绍**: {cn_clean[:160] or '（暂无中文摘要）'}\n\n"
                     f"**来源**: {_display_source(ev)} · **跟进决策**: `{ev.get('follow_decision','')}`{url_line}"
                 )
                 st.markdown(render_status_pill(ev.get("data_authenticity", "")), unsafe_allow_html=True)
