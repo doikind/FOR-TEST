@@ -57,11 +57,13 @@ streamlit run app_agent2.py --server.port 8502
 
 | 应用 | 地址 | 作用 |
 |---|---|---|
-| **Agent 1** | http://localhost:8501 | 每日热点 → 候选内容池 |
-| **Agent 2** | http://localhost:8502 | 爆款拆解 → 二次创作 |
+| **Agent 1（公网）** | https://doikind-finsignal-agent1.streamlit.app | 每日热点 → 候选内容池 |
+| **Agent 2（公网）** | https://doikind-finsignal-agent2.streamlit.app | 爆款拆解 → 二次创作 |
+| **Agent 1（本地）** | http://localhost:8501 | 每日热点 → 候选内容池 |
+| **Agent 2（本地）** | http://localhost:8502 | 爆款拆解 → 二次创作 |
 | 启动器（可选） | http://localhost:8500 | 导航页 |
 
-> 两个 Agent 是独立网页应用，共享一个 SQLite（`finsignal.db`），各页面只显示自己 pipeline 的候选，互不串扰。
+> 本地双端口运行时，两个 Agent 可以共享一个 SQLite（`finsignal.db`）。分别部署到 Streamlit Community Cloud 后，两个应用位于独立运行环境，本地 SQLite 数据不会自动互通。
 
 ### 无 API Key 的 Demo 模式
 
