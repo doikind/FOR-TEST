@@ -230,18 +230,18 @@ def page_discovery():
     events = st.session_state.get("hot_events", [])
     if events:
         # ------------------------------------------------------------------
-        # 爆款指数 Top 10 榜单（viral index board）
+        # 爆款指数 Top 10 榜单（viral index board）— 主视图
         # ------------------------------------------------------------------
         from agents import viral_index
 
         st.subheader("🔥 爆款指数 Top 10 榜单")
         st.caption(
-            f"评分维度：时效性×{viral_index.WEIGHTS['timeliness']:.0%} · "
+            f"时效性×{viral_index.WEIGHTS['timeliness']:.0%} · "
             f"实操性×{viral_index.WEIGHTS['actionability']:.0%} · "
             f"视觉性×{viral_index.WEIGHTS['visual']:.0%} · "
             f"新颖性×{viral_index.WEIGHTS['novelty']:.0%} · "
             f"权威/相关性×{viral_index.WEIGHTS['authority']:.0%} · "
-            f"满分 100，≥{viral_index.VIRAL_THRESHOLD:.0f} 分才有资格进入候选池"
+            f"满分 100，≥{viral_index.VIRAL_THRESHOLD:.0f} 分进入候选池"
         )
         board = viral_index.top10_board(events)
         st.markdown(
@@ -256,7 +256,7 @@ def page_discovery():
                 f"{rank}. 爆款指数 {vi:.0f} 分 [{badge}] ｜ "
                 f"{item['core_insight'][:48]}"
             )
-            with st.expander(header, expanded=(rank == 1 and qualifies)):
+            with st.expander(header, expanded=(qualifies and rank <= 3)):
                 d = item["dims"]
                 st.markdown(
                     "| 维度 | 得分 | 理由 |\n"
@@ -283,97 +283,99 @@ def page_discovery():
                 else:
                     st.caption("爆款指数未达 80 分，不进入候选池。")
 
-        st.divider()
-        sort_by = st.selectbox("排序方式", ["爆款指数（默认）", "优先级分数", "相关性分数", "跟进决策"])
-        if sort_by == "爆款指数（默认）":
-            events = sorted(
-                events,
-                key=lambda e: (e.get("priority_reasons", {}).get("viral_index", {}) or {}).get("viral_index", 0),
-                reverse=True,
-            )
-        elif sort_by == "相关性分数":
-            events = sorted(
-                events,
-                key=lambda e: (e.get("priority_reasons", {}).get("relevance", {}) or {}).get("score", 0),
-                reverse=True,
-            )
-        elif sort_by == "跟进决策":
-            order = {"follow": 0, "consider": 1, "caution": 2, "skip": 3}
-            events = sorted(events, key=lambda e: order.get(e.get("follow_decision", ""), 4))
-        else:
-            events = sorted(events, key=lambda e: e.get("priority_score", 0), reverse=True)
+        # ------------------------------------------------------------------
+        # 完整热点列表 — 折叠容器（默认收起，需要时展开）
+        # ------------------------------------------------------------------
+        with st.expander(f"📋 查看全部热点列表（{len(events)} 条）", expanded=False):
+            sort_by = st.selectbox("排序方式", ["爆款指数（默认）", "优先级分数", "相关性分数", "跟进决策"])
+            if sort_by == "爆款指数（默认）":
+                events = sorted(
+                    events,
+                    key=lambda e: (e.get("priority_reasons", {}).get("viral_index", {}) or {}).get("viral_index", 0),
+                    reverse=True,
+                )
+            elif sort_by == "相关性分数":
+                events = sorted(
+                    events,
+                    key=lambda e: (e.get("priority_reasons", {}).get("relevance", {}) or {}).get("score", 0),
+                    reverse=True,
+                )
+            elif sort_by == "跟进决策":
+                order = {"follow": 0, "consider": 1, "caution": 2, "skip": 3}
+                events = sorted(events, key=lambda e: order.get(e.get("follow_decision", ""), 4))
+            else:
+                events = sorted(events, key=lambda e: e.get("priority_score", 0), reverse=True)
 
-        st.subheader(f"完整热点列表（{len(events)}）")
-        enriched = st.session_state.get("auto_enriched", {})
-        for i, ev in enumerate(events, 1):
-            pr = ev.get("priority_reasons", {})
-            fr = pr.get("follow_reasons", [])
-            rel = pr.get("relevance", {})
-            decision = ev.get("follow_decision", "")
-            key = ev.get("dedup_key") or ev.get("url")
-            en = enriched.get(key, {})
-            title_zh = en.get("title_zh", "")
-            # 标题行：英文标题 + 中文翻译
-            header = f"{i}. [{ev['priority_score']}] 【{decision}】{ev['title'][:75]}"
-            if title_zh:
-                header += f"\n    📌 {title_zh[:60]}"
-            with st.expander(header, expanded=(i == 1)):
-                c1, c2, c3 = st.columns([1, 1, 1])
-                with c1:
-                    st.markdown(f"**跟进决策**: `{decision}`")
-                    render_authenticity_badge(ev.get("data_authenticity", ""))
-                    st.markdown(f"**来源**: {_display_source(ev)}")
-                    st.markdown(f"**类目**: {ev.get('category')}")
-                with c2:
-                    st.markdown(f"**URL**: {ev.get('url')}")
-                    st.markdown(f"**采集时间**: {ev.get('collected_at','')[:19]}")
-                with c3:
-                    st.markdown(
-                        f"**因子**: heat={pr.get('heat')} recency={pr.get('recency')} category={pr.get('category')}"
-                    )
-                    if rel:
+            enriched = st.session_state.get("auto_enriched", {})
+            for i, ev in enumerate(events, 1):
+                pr = ev.get("priority_reasons", {})
+                fr = pr.get("follow_reasons", [])
+                rel = pr.get("relevance", {})
+                decision = ev.get("follow_decision", "")
+                key = ev.get("dedup_key") or ev.get("url")
+                en = enriched.get(key, {})
+                title_zh = en.get("title_zh", "")
+                # 标题行：英文标题 + 中文翻译
+                header = f"{i}. [{ev['priority_score']}] 【{decision}】{ev['title'][:75]}"
+                if title_zh:
+                    header += f"\n    📌 {title_zh[:60]}"
+                with st.expander(header, expanded=False):
+                    c1, c2, c3 = st.columns([1, 1, 1])
+                    with c1:
+                        st.markdown(f"**跟进决策**: `{decision}`")
+                        render_authenticity_badge(ev.get("data_authenticity", ""))
+                        st.markdown(f"**来源**: {_display_source(ev)}")
+                        st.markdown(f"**类目**: {ev.get('category')}")
+                    with c2:
+                        st.markdown(f"**URL**: {ev.get('url')}")
+                        st.markdown(f"**采集时间**: {ev.get('collected_at','')[:19]}")
+                    with c3:
                         st.markdown(
-                            f"**相关性**: {rel.get('score')} · 主题 {rel.get('topics')} · 地区 {rel.get('regions')}"
+                            f"**因子**: heat={pr.get('heat')} recency={pr.get('recency')} category={pr.get('category')}"
                         )
-                    if fr:
-                        st.caption("；".join(fr))
+                        if rel:
+                            st.markdown(
+                                f"**相关性**: {rel.get('score')} · 主题 {rel.get('topics')} · 地区 {rel.get('regions')}"
+                            )
+                        if fr:
+                            st.caption("；".join(fr))
 
-                if en:
-                    st.markdown("**中文事件摘要**")
-                    st.write(en.get("summary_zh_text", ""))
-                    st.markdown("**中文主题与关键词**")
-                    st.markdown(f"- **主题**: {en.get('topic_zh','')}")
-                    st.markdown(f"- **关键词**: {en.get('keywords_zh','')}")
-                    st.markdown("**中文内容角度（精确到本条）**")
-                    for a in en.get("angles_zh", []):
-                        st.markdown(f"- {a}")
-                    st.markdown("**英文摘要**")
-                    st.write(en.get("summary", ""))
-                    st.markdown("**英文内容角度**")
-                    for a in en.get("angles", []):
-                        st.markdown(f"- {a}")
-                else:
-                    st.caption("（摘要未生成）")
-
-                if st.button(
-                    "生成候选并加入待审核池",
-                    key=f"pool_{i}",
-                    disabled=decision not in ("follow", "consider"),
-                ):
-                    from agents.hot_topic_agent import build_candidates_for_event, persist_to_pool
-                    from core.models import Event
-
-                    # 爆款指数门槛：只有总分 ≥80 的选题才有资格进入候选池
-                    vi = pr.get("viral_index", {})
-                    if isinstance(vi, dict) and not vi.get("qualifies", False):
-                        st.warning("爆款指数未达 80 分，该选题不进入候选池。")
+                    if en:
+                        st.markdown("**中文事件摘要**")
+                        st.write(en.get("summary_zh_text", ""))
+                        st.markdown("**中文主题与关键词**")
+                        st.markdown(f"- **主题**: {en.get('topic_zh','')}")
+                        st.markdown(f"- **关键词**: {en.get('keywords_zh','')}")
+                        st.markdown("**中文内容角度（精确到本条）**")
+                        for a in en.get("angles_zh", []):
+                            st.markdown(f"- {a}")
+                        st.markdown("**英文摘要**")
+                        st.write(en.get("summary", ""))
+                        st.markdown("**英文内容角度**")
+                        for a in en.get("angles", []):
+                            st.markdown(f"- {a}")
                     else:
-                        ev_obj = Event.from_dict(ev)
-                        cands = build_candidates_for_event(ev_obj)
-                        ids = persist_to_pool(ev_obj, cands)
-                        st.session_state["pooled_ids"] = ids
-                        st.success(f"已生成 {len(cands)} 条候选并加入待审核池（id={ids}）")
-                        st.rerun()
+                        st.caption("（摘要未生成）")
+
+                    if st.button(
+                        "生成候选并加入待审核池",
+                        key=f"pool_{i}",
+                        disabled=decision not in ("follow", "consider"),
+                    ):
+                        from agents.hot_topic_agent import build_candidates_for_event, persist_to_pool
+                        from core.models import Event
+
+                        # 爆款指数门槛：只有总分 ≥80 的选题才有资格进入候选池
+                        vi = pr.get("viral_index", {})
+                        if isinstance(vi, dict) and not vi.get("qualifies", False):
+                            st.warning("爆款指数未达 80 分，该选题不进入候选池。")
+                        else:
+                            ev_obj = Event.from_dict(ev)
+                            cands = build_candidates_for_event(ev_obj)
+                            ids = persist_to_pool(ev_obj, cands)
+                            st.session_state["pooled_ids"] = ids
+                            st.success(f"已生成 {len(cands)} 条候选并加入待审核池（id={ids}）")
+                            st.rerun()
 
 
 def page_pool():
