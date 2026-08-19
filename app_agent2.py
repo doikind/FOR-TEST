@@ -20,7 +20,15 @@ if os.path.isdir(DEPS) and DEPS not in sys.path:
 if BASE not in sys.path:
     sys.path.insert(0, BASE)
 
-from ui.common import render_authenticity_badge, render_disclaimer  # noqa: E402
+from ui.common import (  # noqa: E402
+    inject_theme,
+    render_authenticity_badge,
+    render_disclaimer,
+    render_footer,
+    render_hero,
+    render_metrics,
+    render_section,
+)
 
 
 def _db():
@@ -31,7 +39,7 @@ def _db():
 
 
 def page_discovery():
-    st.header("Agent 2 · 步骤 1：X 内容发现与拆解")
+    render_section("步骤 1 · X 内容发现与拆解")
     st.caption("X 公开内容发现（或合规真实快照）→ 同账号高表现 vs 普通 → 六维度拆解 → 结构沉淀")
     render_disclaimer()
 
@@ -126,10 +134,11 @@ def page_discovery():
 
         analysis = st.session_state.get("agent2_analysis")
         if analysis:
-            c1, c2, c3 = st.columns(3)
-            c1.metric("高表现", analysis["high_count"])
-            c2.metric("普通", analysis["normal_count"])
-            c3.metric("分组阈值", analysis.get("group_threshold"))
+            render_metrics([
+                ("高表现", analysis["high_count"], "同账号对比"),
+                ("普通", analysis["normal_count"], "同账号对比"),
+                ("分组阈值", analysis.get("group_threshold"), "相对表现分"),
+            ])
 
             # 全部推文表格：组别 + 链接 + 时间 + 相对分 + 文本（含互动数据）
             group_map = {p["post_id"]: "高表现" for p in analysis["high_posts"]}
@@ -197,7 +206,7 @@ def page_discovery():
 
 
 def page_creation():
-    st.header("Agent 2 · 步骤 2：围绕洞察二次创作")
+    render_section("步骤 2 · 围绕洞察二次创作")
     st.caption("基于拆解洞察与结构模板 → 生成 ≥3 条原创英文候选 → 写入资产库")
     render_disclaimer()
 
@@ -269,7 +278,7 @@ def page_creation():
 
 
 def page_assets():
-    st.header("Agent 2 · 内容资产库与表现记录")
+    render_section("内容资产库与表现记录")
     st.caption("Agent 2 生成内容 → 模拟发布 → 表现追踪（simulated_demo）")
     render_disclaimer()
     from agents import review
@@ -370,7 +379,7 @@ def page_assets():
 
 
 def page_pool():
-    st.header("Agent 2 · 待审核内容池（content_creation）")
+    render_section("待审核内容池（content_creation）")
     st.caption("五状态人工审核：Draft / Needs Revision / Pending Review / Approved / Rejected")
     render_disclaimer()
     from agents import review
@@ -441,7 +450,7 @@ def page_pool():
 
 
 def page_settings():
-    st.header("数据与设置（Agent 2）")
+    render_section("数据与设置")
     st.subheader("数据真实性标签")
     st.markdown(
         """
@@ -497,9 +506,12 @@ def page_settings():
 
 
 def main():
-    st.title("Agent 2 · 爆款内容拆解 → 二次创作")
-    st.caption("AI 金融内容候选系统 · 东南亚英文市场（新加坡为中心）")
     _db()
+    inject_theme()
+    render_hero(
+        "🚀 Agent 2 · 爆款内容拆解 → 二次创作",
+        "AI 金融内容候选系统 · 东南亚英文市场（新加坡为中心）· 拆解驱动结构复用",
+    )
     tabs = st.tabs(["X 内容发现与拆解", "围绕洞察二次创作", "待审核内容池", "内容资产库", "数据与设置"])
     with tabs[0]:
         page_discovery()
@@ -511,6 +523,7 @@ def main():
         page_assets()
     with tabs[4]:
         page_settings()
+    render_footer()
 
 
 if __name__ == "__main__":

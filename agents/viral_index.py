@@ -2,12 +2,12 @@
 
 Replaces the flat priority ranking with a weighted, explainable "爆款指数":
 
-    ViralIndex = 0.25*Timeliness + 0.25*Actionability
+    ViralIndex = 0.20*Timeliness + 0.25*Actionability
                + 0.20*Visual appeal + 0.20*Novelty
-               + 0.10*Authority/Relevance
+               + 0.15*Authority/Relevance
 
 Each dimension scores 0..100; the composite is 0..100. Only events whose
-composite score is >= VIRAL_THRESHOLD (80) are eligible to enter the final
+composite score is >= VIRAL_THRESHOLD (70) are eligible to enter the final
 candidate pool. Every dimension carries a short reason so the score is fully
 explainable in the UI.
 """
@@ -15,7 +15,7 @@ from __future__ import annotations
 import re
 from typing import Any, Dict, List
 
-VIRAL_THRESHOLD = 80.0
+VIRAL_THRESHOLD = 70.0
 
 # --- dimension weights ------------------------------------------------------
 WEIGHTS = {

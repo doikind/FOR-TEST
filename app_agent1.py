@@ -20,7 +20,19 @@ if os.path.isdir(DEPS) and DEPS not in sys.path:
 if BASE not in sys.path:
     sys.path.insert(0, BASE)
 
-from ui.common import render_authenticity_badge, render_disclaimer  # noqa: E402
+from ui.common import (  # noqa: E402
+    inject_theme,
+    render_authenticity_badge,
+    render_disclaimer,
+    render_footer,
+    render_hero,
+    render_metrics,
+    render_rank_chip,
+    render_score_bars,
+    render_section,
+    render_status_pill,
+    render_viral_dial,
+)
 
 
 def _db():
@@ -142,14 +154,18 @@ def _auto_enrich(events, limit=8):
 
 
 def page_discovery():
-    st.header("Agent 1 · 每日热点 → 候选内容池")
-    st.caption("真实公开数据 → 去重 → 评分 → 账号相关性判断 → 自动双语摘要/角度 → 候选入池")
+    from agents import viral_index
+
+    render_section("步骤 1 · 采集与评分")
+    st.caption(
+        f"真实公开数据 → 去重 → 爆款指数评分（≥{viral_index.VIRAL_THRESHOLD:.0f} 分入池）→ 账号相关性判断"
+    )
     render_disclaimer()
 
     from core.account import current_profile_name, load_profile
 
     profile = load_profile()
-    with st.expander(f"我方账号画像（{profile.get('name','')} · 当前激活）", expanded=False):
+    with st.expander(f"🎯 我方账号画像（{profile.get('name','')} · 当前激活）", expanded=False):
         st.markdown(
             f"- **账号名**: {profile.get('name')}\n"
             f"- **定位**: {profile.get('positioning')}\n"
@@ -211,7 +227,10 @@ def page_discovery():
 
     cs = st.session_state.get("collect_summary")
     if cs:
-        st.markdown(f"**采集 {cs['total']} 条 → 去重后 {cs['deduped']} 条（移除 {cs['removed']}）**")
+        render_metrics([
+            ("采集总数", cs["total"], "raw"),
+            ("去重后", cs["deduped"], f"移除 {cs['removed']}"),
+        ])
         for w in cs["warnings"]:
             st.warning(f"来源失败: {w['source']} — {w['reason']}")
 
@@ -234,7 +253,7 @@ def page_discovery():
         # ------------------------------------------------------------------
         from agents import viral_index
 
-        st.subheader("🔥 爆款指数 Top 10 榜单")
+        render_section("🔥 爆款指数 Top 10 榜单")
         st.caption(
             f"时效性×{viral_index.WEIGHTS['timeliness']:.0%} · "
             f"实操性×{viral_index.WEIGHTS['actionability']:.0%} · "
@@ -244,34 +263,37 @@ def page_discovery():
             f"满分 100，≥{viral_index.VIRAL_THRESHOLD:.0f} 分进入候选池"
         )
         board = viral_index.top10_board(events)
-        st.markdown(
-            f"**共评分 {board['total_scored']} 条 · Top 10 中 {board['qualified_count']} 条达标（≥{board['threshold']:.0f}）**"
-        )
+        render_metrics([
+            ("共评分", board["total_scored"], "条新闻"),
+            ("达标", board["qualified_count"], f"≥{board['threshold']:.0f} 分"),
+        ])
         for rank, item in enumerate(board["top10"], 1):
             ev = item["event"]
             vi = item["viral_index"]
             qualifies = item["qualifies"]
-            badge = "✅ 达标" if qualifies else "⛔ 未达标"
-            header = (
-                f"{rank}. 爆款指数 {vi:.0f} 分 [{badge}] ｜ "
-                f"{item['core_insight'][:48]}"
+            chip = render_rank_chip(rank, top3=qualifies and rank <= 3)
+            pill = (
+                '<span class="fs-pill fs-pill-green">✅ 达标 · 可入池</span>'
+                if qualifies
+                else '<span class="fs-pill fs-pill-gray">⛔ 未达标</span>'
             )
-            with st.expander(header, expanded=(qualifies and rank <= 3)):
-                d = item["dims"]
+            head_html = (
+                f'<div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">'
+                f"{chip}{render_viral_dial(vi, qualifies)}{pill}"
+                f'<span style="color:#374151;font-size:0.92rem;">{item["core_insight"][:56]}</span>'
+                f"</div>"
+            )
+            with st.expander(head_html, expanded=(qualifies and rank <= 3)):
+                st.markdown('<div class="fs-card">', unsafe_allow_html=True)
+                render_score_bars(item["dims"], item["reasons"])
                 st.markdown(
-                    "| 维度 | 得分 | 理由 |\n"
-                    "|---|---|---|\n"
-                    f"| ⏱ 时效性 | {d['timeliness']:.0f} | {'；'.join(item['reasons']['timeliness'])} |\n"
-                    f"| 🛠 实操性 | {d['actionability']:.0f} | {'；'.join(item['reasons']['actionability']) or '—'} |\n"
-                    f"| 🎨 视觉性 | {d['visual']:.0f} | {'；'.join(item['reasons']['visual']) or '—'} |\n"
-                    f"| ✨ 新颖性 | {d['novelty']:.0f} | {'；'.join(item['reasons']['novelty']) or '—'} |\n"
-                    f"| 🏛 权威/相关性 | {d['authority']:.0f} | {'；'.join(item['reasons']['authority']) or '—'} |"
+                    f"**英文标题**: {ev['title'][:90]}\n\n"
+                    f"**来源**: {_display_source(ev)} · **跟进决策**: `{ev.get('follow_decision','')}`"
                 )
-                st.markdown(f"**英文标题**: {ev['title'][:90]}")
-                st.markdown(f"**来源**: {_display_source(ev)} · **跟进决策**: `{ev.get('follow_decision','')}`")
-                render_authenticity_badge(ev.get("data_authenticity", ""))
+                st.markdown(render_status_pill(ev.get("data_authenticity", "")), unsafe_allow_html=True)
+                st.markdown("</div>", unsafe_allow_html=True)
                 if qualifies:
-                    if st.button("生成候选并加入待审核池", key=f"viral_pool_{rank}"):
+                    if st.button("生成候选并加入待审核池", key=f"viral_pool_{rank}", type="primary"):
                         from agents.hot_topic_agent import build_candidates_for_event, persist_to_pool
                         from core.models import Event
 
@@ -281,7 +303,9 @@ def page_discovery():
                         st.success(f"已生成 {len(cands)} 条候选并加入待审核池（id={ids}）")
                         st.rerun()
                 else:
-                    st.caption("爆款指数未达 80 分，不进入候选池。")
+                    st.caption(
+                        f"爆款指数未达 {viral_index.VIRAL_THRESHOLD:.0f} 分，不进入候选池。"
+                    )
 
         # ------------------------------------------------------------------
         # 完整热点列表 — 折叠容器（默认收起，需要时展开）
@@ -365,10 +389,12 @@ def page_discovery():
                         from agents.hot_topic_agent import build_candidates_for_event, persist_to_pool
                         from core.models import Event
 
-                        # 爆款指数门槛：只有总分 ≥80 的选题才有资格进入候选池
+                        # 爆款指数门槛：只有总分 ≥阈值 的选题才有资格进入候选池
                         vi = pr.get("viral_index", {})
                         if isinstance(vi, dict) and not vi.get("qualifies", False):
-                            st.warning("爆款指数未达 80 分，该选题不进入候选池。")
+                            st.warning(
+                                f"爆款指数未达 {viral_index.VIRAL_THRESHOLD:.0f} 分，该选题不进入候选池。"
+                            )
                         else:
                             ev_obj = Event.from_dict(ev)
                             cands = build_candidates_for_event(ev_obj)
@@ -379,7 +405,7 @@ def page_discovery():
 
 
 def page_pool():
-    st.header("Agent 1 · 待审核内容池（hot_topics）")
+    render_section("待审核内容池（hot_topics）")
     st.caption("五状态人工审核：Draft / Needs Revision / Pending Review / Approved / Rejected")
     render_disclaimer()
     from agents import review
@@ -508,7 +534,7 @@ def page_pool():
 
 
 def page_settings():
-    st.header("数据与设置（Agent 1）")
+    render_section("数据与设置")
 
     # ---- 账号画像管理（多画像，可保存/切换/删除）----
     st.subheader("对标账号画像（多画像管理）")
@@ -630,9 +656,12 @@ def page_settings():
 
 
 def main():
-    st.title("Agent 1 · 每日热点 → 候选内容池")
-    st.caption("AI 金融内容候选系统 · 东南亚英文市场（新加坡为中心）")
     _db()
+    inject_theme()
+    render_hero(
+        "🔥 Agent 1 · 每日热点 → 候选内容池",
+        "AI 金融内容候选系统 · 东南亚英文市场（新加坡为中心）· 真实公开数据驱动",
+    )
     tabs = st.tabs(["热点发现", "待审核内容池", "数据与设置"])
     with tabs[0]:
         page_discovery()
@@ -640,6 +669,7 @@ def main():
         page_pool()
     with tabs[2]:
         page_settings()
+    render_footer()
 
 
 if __name__ == "__main__":
