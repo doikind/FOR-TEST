@@ -3,6 +3,7 @@
 Compares candidate text against benchmark snippets and historical
 candidates; returns a similarity score and the most-similar reference.
 """
+from __future__ import annotations
 from typing import Any, Dict, List
 
 from core import config

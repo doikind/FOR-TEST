@@ -5,6 +5,7 @@ extension references only (never mixed into the primary grouping). If
 Finimize real public data is insufficient, the loader can switch the primary
 case to AlphaSense.
 """
+from __future__ import annotations
 import json
 import os
 from typing import Any, Dict, List

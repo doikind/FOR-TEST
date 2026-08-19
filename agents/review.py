@@ -6,6 +6,7 @@ simulated publish (labeled simulated_demo). Feedback weights are transparent
 rule adjustments (+0.05 approve / -0.03 reject, bounded -0.10..+0.10), never
 presented as model training.
 """
+from __future__ import annotations
 import json
 from typing import Any, Dict, List, Optional
 

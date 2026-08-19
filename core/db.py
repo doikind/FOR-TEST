@@ -1,4 +1,5 @@
 """SQLite persistence layer (single-file, idempotent schema)."""
+from __future__ import annotations
 import os
 import sqlite3
 from typing import Any, Dict, List

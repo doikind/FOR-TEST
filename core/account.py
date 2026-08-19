@@ -7,6 +7,7 @@
 账号画像是可编辑的：设置页可保存自定义画像到 data/account_profile.json，
 relevance_score 优先使用自定义画像，未配置时回退默认。
 """
+from __future__ import annotations
 import json
 import os
 

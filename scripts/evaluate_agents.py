@@ -10,6 +10,7 @@
   L3 多路裁判 —— 相关性/合规/原创性/结构/价值 5 个裁判独立打分（0-5），
                汇总可行性结论（均分与短板）。
 """
+from __future__ import annotations
 import json
 import os
 import sys

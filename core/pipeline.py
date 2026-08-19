@@ -1,4 +1,5 @@
 """Pipeline: standardize -> dedup -> score -> (later) follow decision."""
+from __future__ import annotations
 import datetime as dt
 import hashlib
 import re

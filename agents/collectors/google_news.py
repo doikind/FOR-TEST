@@ -8,6 +8,7 @@ headline suffix ('Headline - Outlet'), which we parse and filter:
   - tier2: other recognizable professional media → kept, marked "media"
   - block: personal blogs, SEO/aggregator junk, unknown domains → dropped
 """
+from __future__ import annotations
 import datetime as dt
 from typing import List
 
