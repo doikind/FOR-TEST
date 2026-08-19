@@ -1,14 +1,3 @@
----
-title: FinSignal Agent1
-emoji: 🌍
-colorFrom: gray
-colorTo: indigo
-sdk: streamlit
-sdk_version: 1.61.1
-app_file: app.py
-pinned: false
----
-
 # FinSignal Content Agent
 
 > AI 金融内容候选系统 · 面向东南亚英文市场（新加坡为中心）
@@ -51,25 +40,18 @@ FinSignal Content Agent 从**真实公开数据**出发，为关注 AI / 金融�
 
 ---
 
-## 🌐 在线 Demo（Streamlit Community Cloud，免费托管）
+## 🌐 在线 Demo
 
-无需本地运行，面试官/协作者可直接打开公网 URL 体验：
+两个 Agent 已部署在公网，可直接打开体验：
 
-1. 打开 https://share.streamlit.io 并用 GitHub 账号登录
-2. **New app** → 选择仓库 `doikind/FOR-TEST`
-3. **Branch**: `main` · **Main file path**: `app_agent1.py`
-4. 点击 **Deploy**，等待 1-2 分钟构建完成
-
-部署成功后你会得到类似 `https://for-test-xxx.streamlit.app` 的公网 URL：
-
-| 应用 | 云端入口 | 说明 |
+| 应用 | 地址 | 说明 |
 |---|---|---|
-| **Agent 1** | `app_agent1.py` 部署后 URL | 每日热点 → 候选内容池 |
-| **Agent 2** | 再 New app 一次，Main file 选 `app_agent2.py` | 爆款拆解 → 二次创作 |
+| **Agent 1** | http://139.199.12.133:8501 | 每日热点 → 候选内容池 |
+| **Agent 2** | http://139.199.12.133:8502 | 爆款拆解 → 二次创作 |
 
-> 云端自动安装 `requirements.txt` 依赖，`config.toml` 已配置 headless/主题；两个 Agent 可各部署一个 app，也可只部署 Agent 1 演示主闭环。
+> 云端自动安装 `requirements.txt` 依赖，`config.toml` 已配置 headless/主题；服务由 systemd 托管，开机自启、崩溃自动重启。
 >
-> ⚠️ 云端的 SQLite 是临时存储（每次重启重建），适合**演示**；持久化数据请用本地部署或后续接入外部数据库。
+> ⚠️ 云端 SQLite 是临时存储（重启重建），适合**演示**；持久化数据请用本地部署或后续接入外部数据库。
 
 ### 本地运行（可选，功能完整）
 
@@ -88,13 +70,11 @@ streamlit run app_agent2.py --server.port 8502
 
 | 应用 | 地址 | 作用 |
 |---|---|---|
-| **Agent 1（公网）** | https://finsignal-agent1.streamlit.app | 每日热点 → 候选内容池 |
-| **Agent 2（公网）** | https://finsignal-agent2.streamlit.app | 爆款拆解 → 二次创作 |
 | **Agent 1（本地）** | http://localhost:8501 | 每日热点 → 候选内容池 |
 | **Agent 2（本地）** | http://localhost:8502 | 爆款拆解 → 二次创作 |
 | 启动器（可选） | http://localhost:8500 | 导航页 |
 
-> 本地双端口运行时，两个 Agent 可以共享一个 SQLite（`finsignal.db`）。分别部署到 Streamlit Community Cloud 后，两个应用位于独立运行环境，本地 SQLite 数据不会自动互通。
+> 本地双端口运行时，两个 Agent 可以共享一个 SQLite（`finsignal.db`）。分别部署到不同服务器/端口后，两个应用位于独立运行环境，本地 SQLite 数据不会自动互通。
 
 ### 无 API Key 的 Demo 模式
 
@@ -155,8 +135,6 @@ python scripts/evaluate_agents.py
 | [数据来源说明](docs/data-sources.md) | 真实数据源、真实性标签、快照兜底、X 内容获取 |
 | [AI 使用说明](docs/ai-usage.md) | Provider 抽象、缓存/模板/实时模式、无 Key Demo |
 | [人工审核点说明](docs/human-review.md) | 五状态机、风险等级与审核关系、记录内容 |
-| [3 分钟演示脚本](docs/demo-script.md) | 17 步 Demo 验收流程 |
-| [GitHub 提交前安全检查](docs/github-safety.md) | 敏感信息、数据合规、提交清单 |
 
 ---
 
@@ -205,4 +183,3 @@ finsignal-content-agent/
 - **不自动发布**：任何内容仅人工 Approve 后进入资产库；不接真实 X 发布
 - **模拟数据标识**：互动指标/模拟发布表现一律 `simulated_demo`
 - **数据合规**：不保存完整 X 帖子，仅 Post ID/URL/片段/派生特征；不声称拥有非公开指标
-- 提交前检查见 [`docs/github-safety.md`](docs/github-safety.md)

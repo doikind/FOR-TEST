@@ -47,8 +47,8 @@
 ## 9. Demo 验证与交付（P0）
 
 - [x] 9.1 端到端 + 边界测试（单源失败降级、全实时源失败走快照、无 Key 可跑、Blocked 禁止入库、模拟标识可见）
-- [x] 9.2 编写 README + 数据来源/架构/AI 使用/人工审核点/局限/优化方向/3 分钟演示脚本/GitHub 安全检查说明
-- [x] 9.3 一键启动验证（pip install -r requirements.txt + streamlit run app.py）+ 按 17 步验收流程走查
+- [x] 9.2 编写 README + 数据来源/架构/AI 使用/人工审核点/局限/优化方向
+- [x] 9.3 一键启动验证（pip install -r requirements.txt + streamlit run app.py）+ 端到端走查
 
 ## 10. 降级项（P1，不影响 P0 闭环，可延后或砍掉）
 
