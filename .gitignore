@@ -16,6 +16,10 @@ finsignal.db
 data/account_profile.json
 data/profiles/
 
+# Deployment build artifact
+finsignal-hf.zip
+*.zip
+
 # OS
 Thumbs.db
 .DS_Store
