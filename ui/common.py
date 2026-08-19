@@ -6,6 +6,8 @@ Design system (per ui-ux-pro-max audit):
   - cards: 1px border, 12px radius, subtle shadow, generous padding
   - never rely on color alone: badges carry text + icon
 """
+from __future__ import annotations
+
 import streamlit as st
 
 # ---------------------------------------------------------------------------
