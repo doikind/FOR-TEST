@@ -10,6 +10,7 @@ Design (deterministic, key-free, no LLM dependency):
      sentence pattern. The lead fact rotates per candidate.
   3. Output is a genuine rewrite: same facts, different words, natural voice.
 """
+from __future__ import annotations
 
 import random
 import re

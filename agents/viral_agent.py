@@ -5,6 +5,7 @@
 (OBSERVED/INFERRED/UNKNOWN) → 沉淀可复用结构 → 围绕同一洞察生成 ≥3 条
 原创候选 → 写入资产库并支持后续模拟表现记录（simulated_demo）。
 """
+from __future__ import annotations
 import json
 from typing import Any, Dict, List
 

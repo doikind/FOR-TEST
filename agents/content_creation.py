@@ -5,6 +5,7 @@ templates, produces candidates with the full required field set, runs a
 TF-IDF similarity check against benchmark content, and runs the financial
 risk check. Writes candidates into the review pool + asset library (draft).
 """
+from __future__ import annotations
 import json
 from typing import Any, Dict, List
 

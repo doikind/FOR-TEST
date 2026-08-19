@@ -12,6 +12,7 @@ the model is updated in place (partial_fit).
 Interpretability: feature coefficients are exposed for the UI; the model is
 explicitly labeled as an online-learning model, NOT rule weights.
 """
+from __future__ import annotations
 import json
 from typing import Any, Dict, List, Optional
 

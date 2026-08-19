@@ -4,6 +4,7 @@
 → 双语摘要/角度 → 生成英文候选（含中文说明）→ 加入待审核内容池。
 采用/驳回由 agents.review 记录，并据此调整后续推荐权重。
 """
+from __future__ import annotations
 import json
 from typing import Any, Dict, List
 
