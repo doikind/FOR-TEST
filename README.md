@@ -40,7 +40,27 @@ FinSignal Content Agent 从**真实公开数据**出发，为关注 AI / 金融�
 
 ---
 
-## 🚀 快速开始
+## 🌐 在线 Demo（Streamlit Community Cloud，免费托管）
+
+无需本地运行，面试官/协作者可直接打开公网 URL 体验：
+
+1. 打开 https://share.streamlit.io 并用 GitHub 账号登录
+2. **New app** → 选择仓库 `doikind/FOR-TEST`
+3. **Branch**: `main` · **Main file path**: `app_agent1.py`
+4. 点击 **Deploy**，等待 1-2 分钟构建完成
+
+部署成功后你会得到类似 `https://for-test-xxx.streamlit.app` 的公网 URL：
+
+| 应用 | 云端入口 | 说明 |
+|---|---|---|
+| **Agent 1** | `app_agent1.py` 部署后 URL | 每日热点 → 候选内容池 |
+| **Agent 2** | 再 New app 一次，Main file 选 `app_agent2.py` | 爆款拆解 → 二次创作 |
+
+> 云端自动安装 `requirements.txt` 依赖，`config.toml` 已配置 headless/主题；两个 Agent 可各部署一个 app，也可只部署 Agent 1 演示主闭环。
+>
+> ⚠️ 云端的 SQLite 是临时存储（每次重启重建），适合**演示**；持久化数据请用本地部署或后续接入外部数据库。
+
+### 本地运行（可选，功能完整）
 
 ```bash
 # Windows PowerShell
