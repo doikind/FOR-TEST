@@ -27,7 +27,19 @@ AGENT2_PORT="${AGENT2_PORT:-8502}"
 
 echo "==> [1/5] Installing system packages (python3, venv, git)"
 apt-get update -y
-apt-get install -y python3 python3-venv python3-pip git
+apt-get install -y python3 python3-venv python3-pip git lsb-release
+
+# Pick a Python >= 3.9 (required by scikit-learn/pandas). On Ubuntu 20.04 the
+# default python3 is 3.8, so install python3.9 explicitly when available.
+PY_BIN="python3"
+if python3 -c 'import sys; sys.exit(0 if sys.version_info >= (3, 9) else 1)'; then
+  :
+elif apt-cache policy python3.9 2>/dev/null | grep -q 'Candidate:'; then
+  echo "==> Python 3.8 detected; installing python3.9"
+  apt-get install -y python3.9 python3.9-venv python3.9-dev
+  PY_BIN="python3.9"
+fi
+echo "==> Using Python: $($PY_BIN --version)"
 
 echo "==> [2/5] Cloning FinSignal Content Agent from GitHub"
 if [ -d "$APP_DIR/.git" ]; then
@@ -39,7 +51,7 @@ cd "$APP_DIR"
 
 echo "==> [3/5] Creating virtualenv and installing Python dependencies"
 if [ ! -d .venv ]; then
-  python3 -m venv .venv
+  "$PY_BIN" -m venv .venv
 fi
 .venv/bin/pip install --upgrade pip
 .venv/bin/pip install -r requirements.txt
