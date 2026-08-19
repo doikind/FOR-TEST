@@ -294,9 +294,11 @@ def page_discovery():
                 st.markdown(head_html, unsafe_allow_html=True)
                 st.markdown('<div class="fs-card">', unsafe_allow_html=True)
                 render_score_bars(item["dims"], item["reasons"])
+                ev_url = ev.get("url", "")
+                url_line = f" · 🔗 [打开原文]({ev_url})" if ev_url else " · 无原文链接"
                 st.markdown(
                     f"**英文标题**: {ev['title'][:90]}\n\n"
-                    f"**来源**: {_display_source(ev)} · **跟进决策**: `{ev.get('follow_decision','')}`"
+                    f"**来源**: {_display_source(ev)} · **跟进决策**: `{ev.get('follow_decision','')}`{url_line}"
                 )
                 st.markdown(render_status_pill(ev.get("data_authenticity", "")), unsafe_allow_html=True)
                 st.markdown("</div>", unsafe_allow_html=True)
