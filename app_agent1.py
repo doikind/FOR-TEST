@@ -271,19 +271,27 @@ def page_discovery():
             ev = item["event"]
             vi = item["viral_index"]
             qualifies = item["qualifies"]
-            chip = render_rank_chip(rank, top3=qualifies and rank <= 3)
-            pill = (
-                '<span class="fs-pill fs-pill-green">✅ 达标 · 可入池</span>'
-                if qualifies
-                else '<span class="fs-pill fs-pill-gray">⛔ 未达标</span>'
+            badge = "✅ 达标 · 可入池" if qualifies else "⛔ 未达标"
+            # label must be PLAIN TEXT — st.expander does not render HTML in label
+            label = (
+                f"{rank}. 爆款指数 {vi:.0f} 分 [{badge}] ｜ "
+                f"{item['core_insight'][:48]}"
             )
-            head_html = (
-                f'<div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">'
-                f"{chip}{render_viral_dial(vi, qualifies)}{pill}"
-                f'<span style="color:#374151;font-size:0.92rem;">{item["core_insight"][:56]}</span>'
-                f"</div>"
-            )
-            with st.expander(head_html, expanded=(qualifies and rank <= 3)):
+            with st.expander(label, expanded=(qualifies and rank <= 3)):
+                # rich HTML visual (rank chip + dial + pill) rendered INSIDE
+                chip = render_rank_chip(rank, top3=qualifies and rank <= 3)
+                pill = (
+                    '<span class="fs-pill fs-pill-green">✅ 达标 · 可入池</span>'
+                    if qualifies
+                    else '<span class="fs-pill fs-pill-gray">⛔ 未达标</span>'
+                )
+                head_html = (
+                    f'<div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">'
+                    f"{chip}{render_viral_dial(vi, qualifies)}{pill}"
+                    f'<span style="color:#374151;font-size:0.92rem;">{item["core_insight"][:56]}</span>'
+                    f"</div>"
+                )
+                st.markdown(head_html, unsafe_allow_html=True)
                 st.markdown('<div class="fs-card">', unsafe_allow_html=True)
                 render_score_bars(item["dims"], item["reasons"])
                 st.markdown(
