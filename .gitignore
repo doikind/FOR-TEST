@@ -20,6 +20,10 @@ data/profiles/
 finsignal-hf.zip
 *.zip
 
+# Local-only presentation materials (not part of the repo)
+docs/talk-agent1.md
+docs/talk-agent2.md
+
 # OS
 Thumbs.db
 .DS_Store
