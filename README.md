@@ -1,3 +1,14 @@
+---
+title: FinSignal Agent1
+emoji: 🌍
+colorFrom: gray
+colorTo: indigo
+sdk: streamlit
+sdk_version: 1.61.1
+app_file: app.py
+pinned: false
+---
+
 # FinSignal Content Agent
 
 > AI 金融内容候选系统 · 面向东南亚英文市场（新加坡为中心）
