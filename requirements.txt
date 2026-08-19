@@ -1,7 +1,6 @@
 streamlit>=1.40
 requests>=2.32
 feedparser>=6.0
-feedparser-sgmllib>=2.0
 pandas>=2.2
 scikit-learn>=1.5
 numpy>=1.26
