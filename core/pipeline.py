@@ -277,6 +277,22 @@ def score(events: List[Event]) -> List[Event]:
             "feedback": ev.feedback_score,
         })
 
+        # --- Viral Index (爆款指数) ------------------------------------------
+        # Weighted explainable score: timeliness/actionability/visual/novelty/
+        # authority. Composite 0..100; >= VIRAL_THRESHOLD qualifies for the pool.
+        try:
+            from agents import viral_index
+
+            vi = viral_index.score_event(ev.to_dict())
+            ev.priority_reasons["viral_index"] = vi
+        except Exception:  # noqa: BLE001 — scoring must never break the pipeline
+            ev.priority_reasons["viral_index"] = {
+                "viral_index": 0.0,
+                "dims": {},
+                "reasons": {},
+                "qualifies": False,
+            }
+
     events.sort(key=lambda e: e.priority_score, reverse=True)
     return events
 
