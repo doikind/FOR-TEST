@@ -3,10 +3,10 @@
 两个 Agent 是**两个独立的 Streamlit 网页应用**，UI 完全分开：
 
   Agent 1 · 每日热点 → 候选内容池
-      https://doikind-finsignal-agent1.streamlit.app
+      https://finsignal-agent1.streamlit.app
 
   Agent 2 · 爆款拆解 → 二次创作
-      https://doikind-finsignal-agent2.streamlit.app
+      https://finsignal-agent2.streamlit.app
 
 本地运行时可以共享一个 SQLite 数据库（finsignal.db）。分别部署到
 Streamlit Community Cloud 后，两个应用位于独立运行环境，不共享本地 SQLite。
@@ -18,8 +18,8 @@ import streamlit as st
 
 st.set_page_config(page_title="FinSignal Content Agent · Launcher", layout="wide")
 
-AGENT1_URL = "https://doikind-finsignal-agent1.streamlit.app"
-AGENT2_URL = "https://doikind-finsignal-agent2.streamlit.app"
+AGENT1_URL = "https://finsignal-agent1.streamlit.app"
+AGENT2_URL = "https://finsignal-agent2.streamlit.app"
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 DEPS = os.path.join(BASE, ".py-deps")

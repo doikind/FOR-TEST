@@ -57,8 +57,8 @@ streamlit run app_agent2.py --server.port 8502
 
 | 应用 | 地址 | 作用 |
 |---|---|---|
-| **Agent 1（公网）** | https://doikind-finsignal-agent1.streamlit.app | 每日热点 → 候选内容池 |
-| **Agent 2（公网）** | https://doikind-finsignal-agent2.streamlit.app | 爆款拆解 → 二次创作 |
+| **Agent 1（公网）** | https://finsignal-agent1.streamlit.app | 每日热点 → 候选内容池 |
+| **Agent 2（公网）** | https://finsignal-agent2.streamlit.app | 爆款拆解 → 二次创作 |
 | **Agent 1（本地）** | http://localhost:8501 | 每日热点 → 候选内容池 |
 | **Agent 2（本地）** | http://localhost:8502 | 爆款拆解 → 二次创作 |
 | 启动器（可选） | http://localhost:8500 | 导航页 |
